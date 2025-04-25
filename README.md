@@ -32,29 +32,7 @@ export default function App() {
     const specialties = searchParams.getAll('specialty');
     const sort = searchParams.get('sort');
 
-    // Search Filter
-    if (search) {
-      result = result.filter(doc => doc.name.toLowerCase().includes(search.toLowerCase()));
-    }
-
-    // Consultation Filter
-    if (moc) {
-      result = result.filter(doc => doc.mode === moc);
-    }
-
-    // Specialty Filter
-    if (specialties.length > 0) {
-      result = result.filter(doc => specialties.some(spec => doc.specialty.includes(spec)));
-    }
-
-    // Sorting
-    if (sort === 'fees') {
-      result.sort((a, b) => a.fees - b.fees);
-    } else if (sort === 'experience') {
-      result.sort((a, b) => b.experience - a.experience);
-    }
-
-    setFilteredDoctors(result);
+  
   };
 
   return (
